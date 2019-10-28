@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 const assert = require('assert');
+const {IllegalArgumentError} = require('ganiyem-error');
 const {escape, unescape} = require('../../');
 const escapedSyntaxCharacter = '\\^\\$\\\\\\.\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|';
 const unescapedSyntaxCharacter = '^$\\.*+?()[]{}|';
@@ -64,7 +65,7 @@ describe('index', () => {
 			escape(123);
 			assert.ok(false);
 		} catch (e) {
-			assert.strictEqual(e.message, 'The value must be type of string');
+			assert.ok(e instanceof IllegalArgumentError);
 		}
 	});
 
@@ -75,7 +76,7 @@ describe('index', () => {
 			unescape(123);
 			assert.ok(false);
 		} catch (e) {
-			assert.strictEqual(e.message, 'The value must be type of string');
+			assert.ok(e instanceof IllegalArgumentError);
 		}
 	});
 });

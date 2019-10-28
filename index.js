@@ -15,6 +15,8 @@
  */
 'use strict';
 
+const {IllegalArgumentError} = require('ganiyem-error');
+
 /**
  * "^", "$", "\", ".", "*", "+", "?", "(", ")", "[", "]", "{", "}", "|"
  * [reference](https://www.ecma-international.org/ecma-262/10.0/index.html#prod-SyntaxCharacter)
@@ -24,24 +26,24 @@ const unescapeRegexp = /\\(.)/g;
 
 /**
  * @param {string} value
- * @throws {Error}
+ * @throws {IllegalArgumentError}
  * @return {string}
  */
 function escape(value){
 	if (typeof value !== 'string') {
-		throw new Error('The value must be type of string');
+		throw new IllegalArgumentError('The value must be type of string');
 	}
 	return value.replace(escapeRegexp, '\\$&');
 }
 
 /**
  * @param {string} value
- * @throws {Error}
+ * @throws {IllegalArgumentError}
  * @return {string}
  */
 function unescape(value){
 	if (typeof value !== 'string') {
-		throw new Error('The value must be type of string');
+		throw new IllegalArgumentError('The value must be type of string');
 	}
 	return value.replace(unescapeRegexp, '$1');
 }
