@@ -27,7 +27,7 @@ const unescapeRegexp = /\\(.)/g;
 /**
  * @param {string} value
  * @throws {IllegalArgumentError}
- * @return {string}
+ * @returns {string}
  */
 function escape(value){
 	if (typeof value !== 'string') {
@@ -39,7 +39,7 @@ function escape(value){
 /**
  * @param {string} value
  * @throws {IllegalArgumentError}
- * @return {string}
+ * @returns {string}
  */
 function unescape(value){
 	if (typeof value !== 'string') {
