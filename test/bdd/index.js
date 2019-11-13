@@ -16,67 +16,50 @@
 const assert = require('assert');
 const {IllegalArgumentError} = require('ganiyem-error');
 const {escape, unescape} = require('../../');
+
 const escapedSyntaxCharacter = '\\^\\$\\\\\\.\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|';
 const unescapedSyntaxCharacter = '^$\\.*+?()[]{}|';
 
-/**
- */
 describe('index', () => {
-	/**
-	 */
-	it('typeof(escape) === "function"', () => {
-		assert.strictEqual(typeof escape, 'function');
-	});
-	
-	/**
-	 */
-	it('typeof(unescape) === "function"', () => {
-		assert.strictEqual(typeof unescape, 'function');
-	});
+  it('must be typeof escape === "function"', () => {
+    assert.ok(typeof escape === 'function');
+  });
 
-	/**
-	 */
-	it('escape(unescapedSyntaxCharacter) === escapedSyntaxCharacter', () => {
-		assert.strictEqual(escape(unescapedSyntaxCharacter), escapedSyntaxCharacter);
-	});
+  it('must be typeof unescape === "function"', () => {
+    assert.ok(typeof unescape === 'function');
+  });
 
-	/**
-	 */
-	it('unescape(escapedSyntaxCharacter) === unescapedSyntaxCharacter', () => {
-		assert.strictEqual(unescape(escapedSyntaxCharacter), unescapedSyntaxCharacter);
-	});
+  it('must be escape(unescapedSyntaxCharacter) === escapedSyntaxCharacter', () => {
+    assert.strictEqual(escape(unescapedSyntaxCharacter), escapedSyntaxCharacter);
+  });
 
-	/**
-	 */
-	it('escape("{foo[]}") === "\\{foo\\[\\]\\}"', () => {
-		assert.strictEqual(escape('{foo[]}'), '\\{foo\\[\\]\\}');
-	});
+  it('must be unescape(escapedSyntaxCharacter) === unescapedSyntaxCharacter', () => {
+    assert.strictEqual(unescape(escapedSyntaxCharacter), unescapedSyntaxCharacter);
+  });
 
-	/**
-	 */
-	it('unescape("\\{foo\\[\\]\\}") === "{foo[]}"', () => {
-		assert.strictEqual(unescape('\\{foo\\[\\]\\}'), '{foo[]}');
-	});
+  it('must be escape("{foo[]}") === "\\{foo\\[\\]\\}"', () => {
+    assert.strictEqual(escape('{foo[]}'), '\\{foo\\[\\]\\}');
+  });
 
-	/**
-	 */
-	it('escape(123) ...catch(e)', () => {
-		try {
-			escape(123);
-			assert.ok(false);
-		} catch (e) {
-			assert.ok(e instanceof IllegalArgumentError);
-		}
-	});
+  it('must be unescape("\\{foo\\[\\]\\}") === "{foo[]}"', () => {
+    assert.strictEqual(unescape('\\{foo\\[\\]\\}'), '{foo[]}');
+  });
 
-	/**
-	 */
-	it('unescape(123) ...catch(e)', () => {
-		try {
-			unescape(123);
-			assert.ok(false);
-		} catch (e) {
-			assert.ok(e instanceof IllegalArgumentError);
-		}
-	});
+  it('must be escape(123) throw IllegalArgumentError()', () => {
+    try {
+      escape(123);
+      assert.ok(false);
+    } catch (e) {
+      assert.ok(e instanceof IllegalArgumentError);
+    }
+  });
+
+  it('must be unescape(123) throw IllegalArgumentError()', () => {
+    try {
+      unescape(123);
+      assert.ok(false);
+    } catch (e) {
+      assert.ok(e instanceof IllegalArgumentError);
+    }
+  });
 });
