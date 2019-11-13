@@ -30,10 +30,10 @@ const unescapeRegexp = /\\(.)/g;
  * @returns {string}
  */
 function escape(value){
-	if (typeof value !== 'string') {
-		throw new IllegalArgumentError('The value must be type of string');
-	}
-	return value.replace(escapeRegexp, '\\$&');
+  if (typeof value !== 'string') {
+    throw new IllegalArgumentError('The value must be type of string');
+  }
+  return value.replace(escapeRegexp, '\\$&');
 }
 
 /**
@@ -42,10 +42,10 @@ function escape(value){
  * @returns {string}
  */
 function unescape(value){
-	if (typeof value !== 'string') {
-		throw new IllegalArgumentError('The value must be type of string');
-	}
-	return value.replace(unescapeRegexp, '$1');
+  if (typeof value !== 'string') {
+    throw new IllegalArgumentError('The value must be type of string');
+  }
+  return value.replace(unescapeRegexp, '$1');
 }
 
 /**
